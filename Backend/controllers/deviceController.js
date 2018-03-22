@@ -71,7 +71,6 @@ exports.device_delete_get = function(req, res) {
 
 exports.device_delete_post = function(req, res) {
   res.send('NOT IMPLEMENTED: device delete POST');
->>>>>>> b3144d031cc4cba1e14948c7a3938967670870db
 }
 
 exports.device_update_get = function(req, res) {
