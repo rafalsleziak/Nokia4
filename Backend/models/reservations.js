@@ -26,34 +26,4 @@ var ReservationSchema = {
   }
 };
 
-ReservationSchema
-.virtual('startDate')
-.get(function() {
-  return this.startDate;
-});
-
-ReservationSchema
-.virtual('endDate')
-.get(function() {
-  return this.endDate;
-});
-
-ReservationSchema
-.virtual('numOfPeople')
-.get(function() {
-  return this.numOfPeople;
-});
-
-ReservationSchema
-.virtual('option')
-.get(function() {
-  return this.option;
-});
-
-ReservationSchemaeSchema
-.virtual('url')
-.get(function()){
-  return '/api/reservation/'+ this._id;
-}
-
-module.exports = mongoose.model('Reservation', DeviceSchema);
+module.exports = mongoose.model('Reservation', ReservationSchema);
