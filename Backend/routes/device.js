@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 
+<<<<<<< HEAD
 var Device = require('../models/device');
 //var device_controller = require('../controllers/deviceController.js');
 
@@ -62,5 +63,21 @@ router.route('/:device_id')
 
 //router.get(':id/update', device_controller.device_update_get);
 //router.post(':id/update', device_controller.device_update_post);
+=======
+var device_controller = require('../controllers/deviceController.js');
+
+router.get('/all', device_controller.device_list);
+
+router.get('/create', device_controller.device_create_get);
+router.post('/create', device_controller.device_create_post);
+
+router.get('/:id', device_controller.device_detail);
+
+router.get(':id/delete', device_controller.device_delete_get);
+router.post(':id/delete', device_controller.device_delete_post);
+
+router.get(':id/update', device_controller.device_update_get);
+router.post(':id/update', device_controller.device_update_post);
+>>>>>>> b3144d031cc4cba1e14948c7a3938967670870db
 
 module.exports = router;
