@@ -1,11 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import DeviceBlock from './Components/DeviceBlock';
+import HomeComponent from './Components/HomeComponent';
+
+import {
+  BrowserRouter as Router,
+} from 'react-router-dom';
 
 ReactDOM.render(
-  <DeviceBlock
-    url='http://localhost:3001/api/devices'
-    //pollInterval={500}  />
-    />
+  <Router>
+    <HomeComponent />
+  </Router>
    ,document.getElementById('root')
 );

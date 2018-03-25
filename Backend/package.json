@@ -3,10 +3,12 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "nodemon ./bin/www"
+    "server": "nodemon ./bin/www",
+    "start": "npm run server",
+    "client": "cd ../Frontend && npm start",
+    "start-dev": "nf start -p 500"
   },
   "dependencies": {
-    "async": "^2.6.0",
     "body-parser": "~1.18.2",
     "cookie-parser": "~1.4.3",
     "debug": "~2.6.9",
@@ -22,7 +24,5 @@
     "nodemon": "^1.17.1",
     "concurrently": "^3.5.1"
   },
-  "devDependencies": {
-    "nodemon": "^1.17.1"
-  }
+  "proxy": "http:localhost:3000"
 }

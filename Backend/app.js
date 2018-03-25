@@ -8,6 +8,8 @@ var Device = require('./models/device');
 var secrets = require('./secrets');
 
 var deviceRoute = require('./routes/device');
+var reservationRoute = require('./routes/reservations');
+
 
 var app = express();
 var router = express.Router();
@@ -30,6 +32,8 @@ router.get('/', function(req, res) {
 });
 
 app.use('/api/devices', deviceRoute);
+app.use('/api/reservations', reservationRoute);
+
 
 
 module.exports = app;

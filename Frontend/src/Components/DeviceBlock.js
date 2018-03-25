@@ -24,8 +24,6 @@ class DeviceBlock extends Component {
   handleDeviceSubmit(device){
     let devices = this.state.data;
     device.id = Date.now();
-    let newDevices = [...devices,device];
-    //this.setState({data: newDevices});
     axios.post(this.props.url, device)
     .then((result) =>{
       this.setState({data:  [...devices,result.data]});
@@ -61,16 +59,15 @@ class DeviceBlock extends Component {
 
   render() {
     return (
-      <div style={style.deviceBox}>
-        <h3 style={style.title}>Devices:</h3>
-      <DeviceList
-        onDeviceDelete = {this.handleDeviceDelete}
-          data={this.state.data}>
-      </DeviceList>
+        <div style={style.deviceBox}>
+          <h3 style={style.title}>Devices:</h3>
+        <DeviceList
+          onDeviceDelete = {this.handleDeviceDelete}
+            data={this.state.data}>
+        </DeviceList>
 
-      <DeviceForm onDeviceSubmit={this.handleDeviceSubmit}/>
-      </div>
-
+        <DeviceForm onDeviceSubmit={this.handleDeviceSubmit}/>
+        </div>
     )
   }
 }
