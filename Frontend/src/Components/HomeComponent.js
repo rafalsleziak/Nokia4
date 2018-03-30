@@ -5,6 +5,7 @@ import {
   Link
 } from 'react-router-dom';
 import DeviceBlock from './DeviceBlock';
+import style from '../style';
 
 const Home = () => (
   <div>
@@ -27,7 +28,7 @@ class HomeComponent extends Component{
     return (
       <div ref="links">
         <ul>
-          <li><Link to="/" onClick={this.handleClick}>Home page</Link></li>
+          <li><Link to="/" key={1} onClick={this.handleClick} style={style.LinkBlock} >Home page</Link></li>
           <li><Link to="/devices" onClick={this.handleClick}>Devices</Link></li>
         </ul>
         <Route exact path="/" component={Home}/>

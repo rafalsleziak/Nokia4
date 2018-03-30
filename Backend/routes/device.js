@@ -12,7 +12,7 @@ router.route('/')
   });
 })
 .post(function(req, res){
-console.log(req.body);
+console.log('Post' + req.body);
   var device = new Device();
   (req.body.name) ? device.name = req.body.name : null;
   (req.body.numLeft) ? device.numLeft = req.body.numLeft : null;
@@ -25,14 +25,14 @@ console.log(req.body);
 
 router.route('/:device_id')
   .put(function(req, res) {
+    console.log('Update' + req.body);
     Device.findById(req.params.device_id, function(err, device) {
       if (err) {        res.send(err); }
       (req.body.name) ? device.name = req.body.name : null;
       (req.body.numLeft) ? device.numLeft= req.body.numLeft : null;
      device.save(function(err) {
-        if (err)
-          res.send(err);
-        res.json({ message: 'device has been updated' });
+        if (err) return res.send(err);
+        res.json({message: 'device has beeen updated'});
       });
     });
   })

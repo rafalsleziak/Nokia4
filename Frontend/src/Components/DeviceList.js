@@ -12,6 +12,7 @@ class DeviceList extends Component {
             numLeft={device.numLeft}
             uniqueID={ device['_id'] }
             onDeviceDelete={this.props.onDeviceDelete}
+            onDeviceEdit={this.props.onDeviceEdit}
             key={ device.id }>
           </Device>
         )

@@ -10,48 +10,32 @@ const style = {
     maxHeight:'70vh',
   },
   device: {
-    margin:'10px',
+
     padding:'3px 10px',
     fontSize:'9px',
     textAlign:'center',
-    textTransform:'uppercase',
     border: '1px solid black'
   },
   deviceForm: {
-    margin:'10px',
-    display:'flex',
-    flexFlow:'row wrap',
-    justifyContent:'space-between'
+    margin:'30 10 0 0',
   },
   deviceFormAuthor: {
     minWidth:'150px',
-    margin:'3px',
+    margin:'3 0 15 0',
     padding:'0 10px',
     borderRadius:'3px',
     height:'40px',
     flex:'2',
     background: '#e5e5e5'
-
   },
   deviceFormText: {
     flex:'4',
     minWidth:'400px',
-    margin:'3px',
+    margin:'3 0 15 0',
     padding:'0 10px',
     height:'40px',
     borderRadius:'3px',
     background: '#e5e5e5'
-  },
-  deviceFormPost: {
-    minWidth:'75px',
-    height:'40px',
-    flex: '1',
-    margin:'5px 3px',
-    fontSize:'10px',
-    backgroundColor:'cyan',
-    borderRadius:'3px',
-    color:'#fff',
-    border:'none'
   },
   updateLink: {
     textDecoration:'none',
@@ -72,7 +56,13 @@ const style = {
     fontAlign:'center'
   },
   tablehead: {
-    fontSize: '16px',
+    fontSize: '16px'
+  },
+  LinkBlock: {
+    fontSize: '12px',
+    ':hover': {
+      backgroundColor: '#e5e5e5'
+    }
   }
 }
 

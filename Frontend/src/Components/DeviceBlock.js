@@ -11,7 +11,7 @@ class DeviceBlock extends Component {
     this.loadDeviceFromServer = this.loadDeviceFromServer.bind(this);
     this.handleDeviceSubmit = this.handleDeviceSubmit.bind(this);
     this.handleDeviceDelete = this.handleDeviceDelete.bind(this);
-    //this.pollInterval = null;
+    this.handleDeviceEdit = this.handleDeviceEdit.bind(this);
   }
 
   loadDeviceFromServer() {
@@ -44,29 +44,33 @@ class DeviceBlock extends Component {
       .catch(err => {
         console.error(err);
       });
-}
+    }
+
+    handleDeviceEdit(id, device) {
+      axios.put( `${this.props.url}/${id}`, device )
+      .catch(err => {
+        console.error(err);
+      })
+    }
 
   componentDidMount() {
     this.loadDeviceFromServer();
-    //if(!this.pollInterval){
-     //this.pollInterval = setInterval(this.loadDeviceFromServer, this.props.pollInterval);
-    //}
   }
 
   componentWillUnmount() {
-    //this.pollInterval && clearInterval(this.pollInterval);
   }
 
   render() {
     return (
         <div style={style.deviceBox}>
           <h3 style={style.title}>Devices:</h3>
+        <DeviceForm
+          onDeviceSubmit={this.handleDeviceSubmit} />
         <DeviceList
           onDeviceDelete = {this.handleDeviceDelete}
-            data={this.state.data}>
+          onDeviceEdit={this.handleDeviceEdit}
+          data={this.state.data}>
         </DeviceList>
-
-        <DeviceForm onDeviceSubmit={this.handleDeviceSubmit}/>
         </div>
     )
   }

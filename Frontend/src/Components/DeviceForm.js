@@ -32,7 +32,7 @@ class DeviceForm extends Component {
   }
   render() {
     return (
-      <form style={ style.deviceForm } onSubmit={ this.handleSubmit }>
+      <form onSubmit={ this.handleSubmit }>
       <MuiThemeProvider>
         <TextField
           id ="name"
@@ -50,7 +50,6 @@ class DeviceForm extends Component {
           label="Submit"
           type="submit"
           primary={true}
-          style={style.deviceFormPost}
         />
       </MuiThemeProvider>
       </form>
