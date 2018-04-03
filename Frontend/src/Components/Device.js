@@ -1,12 +1,19 @@
 import React, {Component} from 'react'
 import style from '../style'
+
 import edit_logo from '../images/editlogo.png';
 import delete_logo from '../images/deletelogo.png';
-import marked from 'marked'
+
+import DeviceDetails from './DeviceDetails';
 
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import TextField from 'material-ui/TextField';
 import RaisedButton from 'material-ui/RaisedButton';
+
+import {
+  Route,
+  Link
+} from 'react-router-dom';
 
 
 class Device extends Component {
@@ -29,7 +36,6 @@ class Device extends Component {
 
   deleteDevice(e) {
     e.preventDefault();
-    this.setState({toBeUpdated: !this.state.toBeUpdated})
     let id = this.props.uniqueID;
     this.props.onDeviceDelete(id);
     console.log('deleted');
@@ -74,14 +80,14 @@ class Device extends Component {
         <table>
           <thead style={style.tablehead}>
             <th>Device Name:</th>
-            <th>Available Devices:</th>
+            <th></th>
             <th></th>
             <th></th>
           </thead>
           <tr style={style.row}>
-
-            <td>{this.props.name}</td>
-            <td>{this.props.numLeft}</td>
+            <td>
+              <Link to={`/devices/${this.props.uniqueID}`}>{this.props.name}</Link>
+            </td>
             <td>
             {/*Edit button shows up only when object is not updated*/}
             {(!this.state.toBeUpdated)
@@ -97,6 +103,9 @@ class Device extends Component {
               <a href='' onClick={this.deleteDevice}>
                 <img src={delete_logo} width="48" height="48" alt="delete device"/>
               </a>
+            </td>
+            <td>
+              <Route path={`/devices/${this.props.uniqueID}`} render={(props) => <DeviceDetails {...this.props}/>} />
             </td>
           </tr>
           {/*Additional row for edit form */}
@@ -143,7 +152,7 @@ class Device extends Component {
                 <RaisedButton
                   label="Cancel"
                   type="submit"
-                  secondary={true}
+                  secondary={false}
                   onClick={this.cancelEditDevice}
                 />
                 </MuiThemeProvider>

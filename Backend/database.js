@@ -9,7 +9,19 @@ var ReservationItem = require('./models/reservations.js');
     numLeft: 5
   },{
     name: "pc",
-    numLeft: 7
+    numLeft: 0
+  },{
+    name: "Deep learning machine",
+    numLeft: 10
+  },{
+    name: "Rasperry Pi Zero",
+    numLeft: 10
+  },{
+    name: "Arduino MRK1000 WiFi",
+    numLeft: 10
+  },{
+    name: "Oscilloscope",
+    numLeft: 10
   }];
 
   var seedReservations = [{

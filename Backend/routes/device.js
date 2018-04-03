@@ -12,7 +12,7 @@ router.route('/')
   });
 })
 .post(function(req, res){
-console.log('Post' + req.body);
+console.log(req.body);
   var device = new Device();
   (req.body.name) ? device.name = req.body.name : null;
   (req.body.numLeft) ? device.numLeft = req.body.numLeft : null;
@@ -24,8 +24,14 @@ console.log('Post' + req.body);
 });
 
 router.route('/:device_id')
+  .get(function(req, res) {
+    Device.findById(req.params.device_id, function(err, device){
+      if(err) return res.send(err);
+      res.json(device);
+    });
+  })
   .put(function(req, res) {
-    console.log('Update' + req.body);
+    console.log(req.body);
     Device.findById(req.params.device_id, function(err, device) {
       if (err) {        res.send(err); }
       (req.body.name) ? device.name = req.body.name : null;

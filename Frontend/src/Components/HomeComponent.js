@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import ReactDOM from 'react-dom';
 import {
   Route,
   Link
@@ -14,25 +13,17 @@ const Home = () => (
 );
 
 class HomeComponent extends Component{
-  constructor() {
-    super();
-    this.handleClick = this.handleClick.bind(this);
-  }
-
-  handleClick() {
-    let mountNode = ReactDOM.findDOMNode(this.refs.links);
-    ReactDOM.unmountComponentAtNode(mountNode);
-  }
-
   render() {
     return (
-      <div ref="links">
-        <ul>
-          <li><Link to="/" key={1} onClick={this.handleClick} style={style.LinkBlock} >Home page</Link></li>
-          <li><Link to="/devices" onClick={this.handleClick}>Devices</Link></li>
+      <div>
+        <ul style={style.header}>
+          <li><Link to='/' style={style.link}>Home page</Link></li>
+          <li><Link to="/devices" style={style.link} >Devices</Link></li>
         </ul>
-        <Route exact path="/" component={Home}/>
-        <Route path="/devices" component={() => <DeviceBlock url='http://localhost:3001/api/devices'/>}/>
+        <div style={style.content}>
+          <Route exact path="/" component={Home} />
+          <Route path="/devices" component={() => <DeviceBlock url='http://localhost:3001/api/devices'/>}/>
+        </div>
       </div>
     );
   }

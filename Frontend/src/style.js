@@ -58,12 +58,16 @@ const style = {
   tablehead: {
     fontSize: '16px'
   },
-  LinkBlock: {
-    fontSize: '12px',
-    ':hover': {
-      backgroundColor: '#e5e5e5'
-    }
+  tableDetails: {
+    textAlign: 'left'
+  },
+  available:{
+    color: 'green'
+  },
+  unavailable:{
+    color: 'red'
   }
+
 }
 
 module.exports = style;
