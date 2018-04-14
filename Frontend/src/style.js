@@ -1,4 +1,7 @@
 const style = {
+  body: {
+    margin: '1% 6% 1% 6%'
+  },
   deviceBox: {
     width:'80vw',
     margin:'0 auto',
@@ -10,7 +13,6 @@ const style = {
     maxHeight:'70vh',
   },
   device: {
-
     padding:'3px 10px',
     fontSize:'9px',
     textAlign:'center',
@@ -62,12 +64,66 @@ const style = {
     textAlign: 'left'
   },
   available:{
-    color: 'green'
+    color: 'black',
+    background: '#7dce92',
+    border: '1px solid #217236',
+    padding: '3px',
+    textAlign: 'center',
+    margin: '1% 7% 1% 7%'
   },
   unavailable:{
-    color: 'red'
+    color: 'black',
+    padding: '3px',
+    background: '#ef948f',
+    border: '1px solid #e2544d',
+    textAlign: 'center',
+    margin: '1% 7% 1% 7%'
+  },
+  list: {
+    float: 'left',
+    margin: '15px 0px 20px 20px'
+  },
+  deviceName: {
+    textAlign: 'center',
+    fontWeight: 'bold',
+    fontSize: '32px',
+    textTransform: 'uppercase',
+    margin: '0 10px 0 0'
+  },
+  unorderedlist: {
+    listStyleType: 'none',
+    margin: '0px',
+    padding: '0px',
+    overflow: 'hidden'
+  },
+  lightborder:{
+    border: '1px solid #e5e5e5'
+  },
+  link: {
+    color: '#183693',
+    padding: '0px',
+    fontSize: '16px',
+    textDecoration: 'none',
+    margin: '0px 0px 20px 0px',
+    ":hover": {
+      color: '#b9ffff'
+   }
+  },
+  logo: {
+    color: '#183693',
+    textTransform: 'uppercase',
+    textDecoration: 'none',
+    fontWeight: 'bold',
+    fontSize: '16px',
+    margin: '0px 100px 20px 0px'
+  },
+  footer: {
+    color: '#626466',
+    fontSize: '16px',
+    textAlign: 'left',
+    fontStyle: 'italic',
+    margin: '0px 100px 0px 0px'
   }
-
 }
 
-module.exports = style;
+export default style;

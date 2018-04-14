@@ -1,12 +1,15 @@
 {
   "name": "reservation-system",
+  "homepage": "https://github.com/nokia-wroclaw/innovativeproject-reservation-system.git",
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "server": "nodemon ./bin/www",
-    "start": "npm run server",
-    "client": "cd ../Frontend && npm start",
-    "start-dev": "nf start -p 500"
+    "start": "nodemon ./bin/www",
+    "build": "npm run build",
+	"test": "npm run test",
+	"eject": "npm run eject",
+	"predeploy": "npm run build",
+	"deploy": "gh-pages -d build"
   },
   "dependencies": {
     "body-parser": "~1.18.2",
@@ -15,14 +18,13 @@
     "express": "^4.16.3",
     "express-generator": "^4.15.5",
     "express-validator": "^5.0.3",
+    "gh-pages": "^1.1.0",
     "mongoose": "^5.0.10",
     "morgan": "~1.9.0",
     "nodemon": "^1.17.1",
     "serve-favicon": "~2.4.5"
   },
   "devDependencies": {
-    "nodemon": "^1.17.1",
-    "concurrently": "^3.5.1"
-  },
-  "proxy": "http:localhost:3000"
+    "nodemon": "^1.17.1"
+  }
 }

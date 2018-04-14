@@ -1,20 +1,23 @@
 import React, {Component} from 'react'
 import style from '../style'
 
-import edit_logo from '../images/editlogo.png';
-import delete_logo from '../images/deletelogo.png';
-
-import DeviceDetails from './DeviceDetails';
+import placeholder from '../images/placeholder_thumbnail.png';
 
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import TextField from 'material-ui/TextField';
+import {List, ListItem} from 'material-ui/List';
+import Divider from 'material-ui/Divider';
 import RaisedButton from 'material-ui/RaisedButton';
+import IconMenu from 'material-ui/IconMenu';
+import MenuItem from 'material-ui/MenuItem';
+import IconButton from 'material-ui/IconButton';
+import MoreVertIcon from 'material-ui/svg-icons/navigation/more-vert';
+import EditIcon from 'material-ui/svg-icons/editor/mode-edit';
+import DeleteIcon from 'material-ui/svg-icons/action/delete';
 
-import {
-  Route,
-  Link
-} from 'react-router-dom';
+import Avatar from 'material-ui/Avatar';
 
+import {Link} from 'react-router-dom';
 
 class Device extends Component {
   constructor(props){
@@ -22,6 +25,7 @@ class Device extends Component {
     this.state = {
       toBeUpdated: false,
       toBeDeleted: false,
+      toBeAdded: true,
       name: '',
       numLeft: ''
     };
@@ -75,92 +79,56 @@ class Device extends Component {
 
   render() {
     return (
-      <div style={style.device} >
-        {/*Table to display devices*/}
-        <table>
-          <thead style={style.tablehead}>
-            <th>Device Name:</th>
-            <th></th>
-            <th></th>
-            <th></th>
-          </thead>
-          <tr style={style.row}>
-            <td>
-              <Link to={`/devices/${this.props.uniqueID}`}>{this.props.name}</Link>
-            </td>
-            <td>
-            {/*Edit button shows up only when object is not updated*/}
-            {(!this.state.toBeUpdated)
-              ? (
-                  <a href='' onClick={this.editDevice}>
-                  <img alt='edit device' src={edit_logo} width="48" height="48"/>
-                </a>
-              ) :null
-            }
-            {/*Delete button */}
-            </td>
-            <td>
-              <a href='' onClick={this.deleteDevice}>
-                <img src={delete_logo} width="48" height="48" alt="delete device"/>
-              </a>
-            </td>
-            <td>
-              <Route path={`/devices/${this.props.uniqueID}`} render={(props) => <DeviceDetails {...this.props}/>} />
-            </td>
-          </tr>
-          {/*Additional row for edit form */}
-          { (this.state.toBeUpdated)
-            ? (
-              <tr>
-              <td>
-                <form onSubmit={this.handleEditDevice}>
-                  <MuiThemeProvider>
-                    <TextField
-                      id ="editName"
-                      floatingLabelText="Change device name..."
-                      value={this.state.name}
-                      onChange={this.handleNameChange}
-                    />
-                  </MuiThemeProvider>
-                </form>
-              </td>
-              <td>
-                <form onSubmit={this.handleEditDevice}>
-                <MuiThemeProvider>
+      <div>
+        <MuiThemeProvider>
+            <List>
+              <ListItem
+                primaryText={<Link to={`/devices/${this.props.uniqueID}`} style={style.link}>{this.props.name} </Link>}
+                leftAvatar={<Avatar src={placeholder} />}
+                rightIconButton={
+                  <IconMenu
+                    iconButtonElement={<IconButton><MoreVertIcon /></IconButton>}
+                  >
+                    <MenuItem primaryText="Edit" leftIcon={<EditIcon/>} onClick={this.editDevice}/>
+                    <MenuItem primaryText="Delete" leftIcon={<DeleteIcon/>} onClick={this.deleteDevice}/>
+                  </IconMenu>
+                }
+              />
+              {(this.state.toBeUpdated)
+              ?
+               (
+                 <form onSubmit={this.handleEditDevice}>
+                 <p>Enter new device name</p>
                   <TextField
-                    id ="editNumLeft"
-                    floatingLabelText="Change available devices..."
+                    id='editDeviceName'
+                    placeholder={this.props.name}
+                    value={this.state.name}
+                    onChange={this.handleNameChange}
+                  />
+                  <p>Enter device availability</p>
+                  <TextField
+                    id='editDeviceNumLeft'
+                    placeholder={this.props.numLeft}
                     value={this.state.numLeft}
                     onChange={this.handleNumLeftChange}
                   />
-                </MuiThemeProvider>
-                </form>
-              </td>
-              <td>
-                <form onSubmit={this.handleEditDevice}>
-                  <MuiThemeProvider>
-                    <RaisedButton
-                      label="Edit"
+                  <RaisedButton
+                      label="confirm"
                       type="submit"
                       primary={true}
-                    />
-                    </MuiThemeProvider>
-                </form>
-              </td>
-              <td>
-              <MuiThemeProvider>
-                <RaisedButton
-                  label="Cancel"
-                  type="submit"
-                  secondary={false}
-                  onClick={this.cancelEditDevice}
-                />
-                </MuiThemeProvider>
-              </td>
-              </tr>
-              )
-          :null  }
-        </table>
+                  />
+                  <RaisedButton
+                      label="Cancel"
+                      type="submit"
+                      primary={false}
+                      onClick={this.cancelEditDevice}
+                  />
+                 </form>
+               )
+              :   (null)}
+              <Divider/>
+            </List>
+        </MuiThemeProvider>
       </div>
     )
   }

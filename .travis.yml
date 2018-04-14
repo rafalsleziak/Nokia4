@@ -1,0 +1,15 @@
+language: node_js
+node_js:
+ - "node"
+services:
+ - mongodb
+before_script:
+ - sleep 15
+ - mongo nokia-reservation --eval 'db.createUser({user:"root",pwd:"qwerty123",roles:["readWrite"]});'
+ - cd Backend && npm install
+ - cd ../Frontend && npm install
+after_success:
+ - git remote rm origin
+ - git remote add origin "https://github.com/nokia-wroclaw/innovativeproject-reservation-system"
+ - cd Frontend && npm run deploy
+ - cd ../Backend && npm run deploy

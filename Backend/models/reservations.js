@@ -7,22 +7,25 @@ var Schema = mongoose.Schema;
 var ReservationSchema = {
   startDate: {
     type: Date,
-    required: true
+    required: false
    },
   endDate: {
     type: Date,
-    required: true
+    required: false
    },
   numOfPeople: {
     type: Number,
-    required: true,
+    required: false,
     min: 0,
     max: 12
   },
+  personName: {
+    type: String
+  },
   option: {
     type: String,
-    enum: ['MakerSpace', 'OpenSpace', 'WholeSpace'],
-    required: true
+    enum: ['MakerSpace', 'OpenSpace','Lab', 'WholeSpace'],
+    required: false
   }
 };
 

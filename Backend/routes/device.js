@@ -36,9 +36,9 @@ router.route('/:device_id')
       if (err) {        res.send(err); }
       (req.body.name) ? device.name = req.body.name : null;
       (req.body.numLeft) ? device.numLeft= req.body.numLeft : null;
-     device.save(function(err) {
+     device.save(function(err, result) {
         if (err) return res.send(err);
-        res.json({message: 'device has beeen updated'});
+        res.json(result);
       });
     });
   })

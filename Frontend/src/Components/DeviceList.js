@@ -3,6 +3,7 @@ import Device from './Device';
 import style from '../style';
 
 class DeviceList extends Component {
+  static defaultProps = {data: []};
   render() {
     console.log(this.props);
     let deviceNodes = this.props.data.map(device => {

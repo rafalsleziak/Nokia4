@@ -12,7 +12,9 @@ class DeviceBlock extends Component {
     this.handleDeviceSubmit = this.handleDeviceSubmit.bind(this);
     this.handleDeviceDelete = this.handleDeviceDelete.bind(this);
     this.handleDeviceEdit = this.handleDeviceEdit.bind(this);
+
   }
+
 
   loadDeviceFromServer() {
     axios.get(this.props.url)
@@ -48,6 +50,15 @@ class DeviceBlock extends Component {
 
     handleDeviceEdit(id, device) {
       axios.put( `${this.props.url}/${id}`, device )
+      .then(result => {
+        console.log(result.data);
+        const index = this.state.data.findIndex(function(item) {
+          return item._id === result.data._id;
+        })
+        const newData = [...this.state.data];
+        newData[index] = result.data;
+        this.setState({data: newData});
+      })
       .catch(err => {
         console.error(err);
       })

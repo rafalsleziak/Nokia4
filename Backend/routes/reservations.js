@@ -17,9 +17,9 @@ router.route('/')
   (req.body.endDate) ? reservation.endDate = req.body.endDate : null;
   (req.body.numOfPeople) ? reservation.numOfPeople = req.body.numOfPeople : null;
   (req.body.option) ? reservation.option = req.body.option : null;
-
+  (req.body.personName) ? reservation.personName = req.body.personName : null;
   reservation.save(function(err, result){
-    if(err) return res.send(err);
+    if(err) { res.send(err); }
     res.json(result);
   });
 });
@@ -27,11 +27,13 @@ router.route('/')
 router.route('/:reservation_id')
   .put(function(req, res) {
     Reservation.findById(req.params.reservation_id, function(err, reservation) {
-      if (err) {        res.send(err); }
+      if (err) {  res.send(err); }
       (req.body.startDate) ? reservation.startDate = req.body.startDate : null;
       (req.body.endDate) ? reservation.endDate = req.body.endDate : null;
       (req.body.numOfPeople) ? reservation.numOfPeople = req.body.numOfPeople : null;
       (req.body.option) ? reservation.option = req.body.option : null;
+      (req.body.personName) ? reservation.personName = req.body.personName : null;
+
      reservation.save(function(err) {
         if (err)
           res.send(err);
