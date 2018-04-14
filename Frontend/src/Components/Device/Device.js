@@ -1,13 +1,11 @@
 import React, {Component} from 'react'
-import style from '../style'
+import style from '../../style'
 
-import placeholder from '../images/placeholder_thumbnail.png';
+import placeholder from '../../images/placeholder_thumbnail.png';
 
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-import TextField from 'material-ui/TextField';
 import {List, ListItem} from 'material-ui/List';
 import Divider from 'material-ui/Divider';
-import RaisedButton from 'material-ui/RaisedButton';
 import IconMenu from 'material-ui/IconMenu';
 import MenuItem from 'material-ui/MenuItem';
 import IconButton from 'material-ui/IconButton';
@@ -94,38 +92,6 @@ class Device extends Component {
                   </IconMenu>
                 }
               />
-              {(this.state.toBeUpdated)
-              ?
-               (
-                 <form onSubmit={this.handleEditDevice}>
-                 <p>Enter new device name</p>
-                  <TextField
-                    id='editDeviceName'
-                    placeholder={this.props.name}
-                    value={this.state.name}
-                    onChange={this.handleNameChange}
-                  />
-                  <p>Enter device availability</p>
-                  <TextField
-                    id='editDeviceNumLeft'
-                    placeholder={this.props.numLeft}
-                    value={this.state.numLeft}
-                    onChange={this.handleNumLeftChange}
-                  />
-                  <RaisedButton
-                      label="confirm"
-                      type="submit"
-                      primary={true}
-                  />
-                  <RaisedButton
-                      label="Cancel"
-                      type="submit"
-                      primary={false}
-                      onClick={this.cancelEditDevice}
-                  />
-                 </form>
-               )
-              :   (null)}
               <Divider/>
             </List>
         </MuiThemeProvider>

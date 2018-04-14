@@ -4,9 +4,7 @@ import RaisedButton from 'material-ui/RaisedButton';
 import NumOfPeopleTextField from './NumOfPeopleTextField'
 import SelectRoomField from './SelectRoomField';
 import DeviceTable from './DeviceTable';
-import {Link} from 'react-router-dom';
 import DataTextField from './DataTextField'
-import {List, ListItem} from 'material-ui/List';
 import PersonNameTextField from './PersonNameTextField'
 import Dialog from 'material-ui/Dialog'
 import FlatButton from 'material-ui/FlatButton';

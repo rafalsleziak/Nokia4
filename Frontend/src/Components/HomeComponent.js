@@ -4,13 +4,14 @@ import {
   Link,
   Switch
 } from 'react-router-dom';
-import DeviceBlock from './DeviceBlock';
+import DeviceBlock from './Device/DeviceBlock';
 import ReservationBlock from './ReservationBlock';
-import DeviceDetails from './DeviceDetails';
+import DeviceDetails from './Device/DeviceDetails/DeviceDetails';
 import ReservationPage from './ReservationForm/ReservationPage';
 import 'react-big-calendar/lib/css/react-big-calendar.css'
 import style from '../style';
 import Radium from 'radium';
+import DeviceEdit from './Device/DeviceDetails/DeviceEdit'
 
 const Home = () => (
   <div>
@@ -63,9 +64,13 @@ class HomeComponent extends Component{
           <Route exact path="/" component={Home} />
           <Route exact path="/devices" component={() => <DeviceBlock url='http://localhost:3001/api/devices'/>}/>
 		      <Route path="/reservations" component={()=> <ReservationBlock url='http://localhost:3001/api/reservations'/>}/>
-          <Route path={'/devices/:id'} component={DeviceDetails} />
+          <Route exact path={'/devices/:id'} component={DeviceDetails} />
           <Route path={'/reservation_form'} component={() => <ReservationPage url='http://localhost:3001/api/reservations'/>} />
+          <Route path={'/devices/:id/edit'} component={DeviceEdit}/>
         </Switch>
+        <footer style={style.footer}>
+          This is footer
+        </footer>
       </div>
     );
   }

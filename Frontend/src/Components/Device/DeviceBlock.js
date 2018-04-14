@@ -2,7 +2,7 @@ import React, {Component} from 'react'
 import axios from 'axios'
 import DeviceList from './DeviceList';
 import DeviceForm from './DeviceForm';
-import style from '../style';
+import style from '../../style';
 
 class DeviceBlock extends Component {
   constructor(props){
@@ -12,7 +12,6 @@ class DeviceBlock extends Component {
     this.handleDeviceSubmit = this.handleDeviceSubmit.bind(this);
     this.handleDeviceDelete = this.handleDeviceDelete.bind(this);
     this.handleDeviceEdit = this.handleDeviceEdit.bind(this);
-
   }
 
 

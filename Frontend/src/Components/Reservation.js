@@ -2,7 +2,6 @@ import React, {Component} from 'react'
 import style from '../style'
 import edit_logo from '../images/editlogo.png';
 import delete_logo from '../images/deletelogo.png';
-import marked from 'marked'
 
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import TextField from 'material-ui/TextField';

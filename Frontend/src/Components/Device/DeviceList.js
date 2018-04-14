@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Device from './Device';
-import style from '../style';
+import style from '../../style';
 
 class DeviceList extends Component {
   static defaultProps = {data: []};
@@ -14,7 +14,7 @@ class DeviceList extends Component {
             uniqueID={ device['_id'] }
             onDeviceDelete={this.props.onDeviceDelete}
             onDeviceEdit={this.props.onDeviceEdit}
-            key={ device.id }>
+            key={ device._id }>
           </Device>
         )
       })

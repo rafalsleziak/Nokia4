@@ -2,6 +2,11 @@ const style = {
   body: {
     margin: '1% 6% 1% 6%'
   },
+  footer: {
+    fontSize: '10px',
+    margin: '10px 0px 0px 0px',
+    fontStyle: 'italic'
+  },
   deviceBox: {
     width:'80vw',
     margin:'0 auto',
@@ -116,13 +121,6 @@ const style = {
     fontWeight: 'bold',
     fontSize: '16px',
     margin: '0px 100px 20px 0px'
-  },
-  footer: {
-    color: '#626466',
-    fontSize: '16px',
-    textAlign: 'left',
-    fontStyle: 'italic',
-    margin: '0px 100px 0px 0px'
   }
 }
 
