@@ -76,6 +76,7 @@ class Dnd extends Component {
           defaultView="week"
           defaultDate={new Date()}
           onSelectSlot={this.props.onRenderChange}
+          onSelectEvent={this.props.onRenderChange}
          />
     )
   }

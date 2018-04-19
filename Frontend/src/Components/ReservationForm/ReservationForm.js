@@ -18,6 +18,8 @@ class ReservationForm2 extends Component {
       value: 'WholeSpace',
       numOfPeople: '',
       personName: '',
+      toBeUpdated: false,
+      toBeDeleted: false, 
     }
   }
 
@@ -35,6 +37,30 @@ class ReservationForm2 extends Component {
                                     personName: personName});
     this.setState({numOfPeople: '', option: '', personName: ''})
   }
+  
+  EditReservation = (e)=> {
+    e.preventDefault()
+    this.setState({toBeUpdated: !this.state.toBeUpdated});
+  }
+
+    handleEditReservation (e) {
+    e.preventDefault();
+    let id = this.props.uniqueID;
+    let numOfPeople = this.state.numOfPeople.trim();
+    let option = this.state.value;
+    let startDate = this.props.startDate;
+    let endDate = this.props.endDate;
+    let personName = this.state.personName;
+    let reservation = { numOfPeople: numOfPeople,
+                                    option: option,
+                                    startDate: startDate,
+                                    endDate: endDate,
+                                    personName: personName};
+    this.props.onReservationEdit(id, reservation);
+    this.setState({numOfPeople: '', option: '', personName: ''})
+  }
+
+  
 
   handleNumOfPeopleChange = (e)=> {
     this.setState({numOfPeople: e.target.value});
@@ -65,6 +91,12 @@ class ReservationForm2 extends Component {
         keyboardFocused={true}
         onClick={this.handleSubmit}
       />,
+    <RaisedButton
+        label="Edit"
+        primary={true}
+        keyboardFocused={true}
+        onClick={this.handleEditReservation}
+      />,
     ];
 
     return (
@@ -78,6 +110,7 @@ class ReservationForm2 extends Component {
           autoScrollBodyContent={true}
         >
         <form onSubmit={this.handleSubmit}>
+        //onEdit={this.handleEditReservation}>
           <DataTextField
             startDate={this.props.startDate}
             endDate={this.props.endDate}
@@ -97,6 +130,8 @@ class ReservationForm2 extends Component {
           <DeviceTable
             onFormOpen={this.state.deviceData}
           />
+                
+        
         </form>
         </Dialog>
         </MuiThemeProvider>
